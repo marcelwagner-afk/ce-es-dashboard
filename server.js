@@ -6,9 +6,16 @@
 // sicher an die Anthropic API weiter.
 //
 // Nutzung:
+//   1. .env Datei anlegen (siehe .env.example)
+//   2. node server.js
+//
+// Oder direkt:
 //   ANTHROPIC_API_KEY=sk-ant-... node server.js
 //
 // ═══════════════════════════════════════════════════════
+
+// .env Datei laden (falls vorhanden)
+require("dotenv").config();
 
 const express = require("express");
 const path = require("path");
@@ -19,7 +26,9 @@ const API_KEY = process.env.ANTHROPIC_API_KEY;
 
 if (!API_KEY) {
   console.error("\n❌ ANTHROPIC_API_KEY fehlt!\n");
-  console.error("Bitte starten mit:");
+  console.error("Option 1: .env Datei anlegen:");
+  console.error("  Kopieren Sie .env.example nach .env und tragen Sie Ihren Key ein\n");
+  console.error("Option 2: Direkt im Terminal:");
   console.error("  ANTHROPIC_API_KEY=sk-ant-... node server.js\n");
   console.error("API-Key erhalten Sie unter: https://console.anthropic.com/settings/keys\n");
   process.exit(1);
