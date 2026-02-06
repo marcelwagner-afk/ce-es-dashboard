@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" rx="112" fill="#141c28"/>
+  <rect x="100" y="76" width="312" height="18" rx="9" fill="#c9a44e" opacity="0.8"/>
+  <text x="256" y="260" text-anchor="middle" font-family="Georgia, serif" font-weight="bold" font-size="120" fill="white">Ce-eS</text>
+  <g transform="translate(256, 380)" stroke="#c9a44e" stroke-width="8" fill="none" stroke-linecap="round">
+    <line x1="0" y1="-50" x2="0" y2="30"/>
+    <line x1="-80" y1="-50" x2="80" y2="-50"/>
+    <line x1="-80" y1="-50" x2="-80" y2="-20"/>
+    <line x1="80" y1="-50" x2="80" y2="-20"/>
+    <path d="M-100,-20 Q-80,-5 -60,-20" stroke-width="6"/>
+    <path d="M60,-20 Q80,-5 100,-20" stroke-width="6"/>
+    <line x1="-50" y1="30" x2="50" y2="30"/>
+  </g>
+</svg>

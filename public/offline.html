@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ce-eS – Offline</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #f6f6f4;
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .box {
+    text-align: center;
+    max-width: 320px;
+  }
+  .icon {
+    width: 72px; height: 72px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #141c28, #1a2836);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 28px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  }
+  h1 { font-size: 20px; color: #1e293b; margin-bottom: 8px; }
+  p { font-size: 14px; color: #64748b; line-height: 1.6; margin-bottom: 20px; }
+  button {
+    padding: 12px 28px;
+    background: linear-gradient(135deg, #16794a, #0f5c37);
+    color: white; border: none; border-radius: 12px;
+    font-size: 14px; font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(22,121,74,0.25);
+  }
+</style>
+</head>
+<body>
+<div class="box">
+  <div class="icon">⚖️</div>
+  <h1>Keine Verbindung</h1>
+  <p>Sie sind gerade offline. Bitte prüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.</p>
+  <button onclick="window.location.reload()">Erneut versuchen</button>
+</div>
+</body>
+</html>
