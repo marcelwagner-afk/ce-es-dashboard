@@ -1,20 +1,7 @@
 // ═══════════════════════════════════════════════════════
-// Ce-eS Dashboard – Server mit KI-Proxy
-// ═══════════════════════════════════════════════════════
-//
-// Startet den Dashboard-Server und leitet KI-Anfragen
-// sicher an die Anthropic API weiter.
-//
-// Nutzung:
-//   1. .env Datei anlegen (siehe .env.example)
-//   2. node server.js
-//
-// Oder direkt:
-//   ANTHROPIC_API_KEY=sk-ant-... node server.js
-//
+// Ce-eS Dashboard – Server mit KI-Proxy + Web-Suche
 // ═══════════════════════════════════════════════════════
 
-// .env Datei laden (falls vorhanden)
 require("dotenv").config();
 
 const express = require("express");
@@ -34,13 +21,13 @@ if (!API_KEY) {
   process.exit(1);
 }
 
-// JSON Body Parser
-app.use(express.json({ limit: "1mb" }));
+// JSON Body Parser (larger limit for tool responses)
+app.use(express.json({ limit: "5mb" }));
 
 // Dashboard (statische Dateien)
 app.use(express.static(path.join(__dirname, "public")));
 
-// ─── KI-Proxy Endpoint ───
+// ─── KI-Proxy Endpoint (supports web_search tool) ───
 app.post("/api/chat", async (req, res) => {
   try {
     const response = await fetch("https://api.anthropic.com/v1/messages", {
@@ -48,7 +35,7 @@ app.post("/api/chat", async (req, res) => {
       headers: {
         "Content-Type": "application/json",
         "x-api-key": API_KEY,
-        "anthropic-version": "2023-06-01",
+        "anthropic-version": "2025-01-01",
       },
       body: JSON.stringify(req.body),
     });
@@ -59,6 +46,7 @@ app.post("/api/chat", async (req, res) => {
       return res.status(response.status).json({
         error: true,
         message: `API Fehler: ${response.status}`,
+        detail: error,
       });
     }
 
@@ -87,7 +75,8 @@ app.listen(PORT, () => {
   ║                                              ║
   ║    → http://localhost:${PORT}                   ║
   ║                                              ║
-  ║    KI-Assistent: ✅ Aktiv                    ║
+  ║    KI-Assistent:  ✅ Aktiv                   ║
+  ║    Web-Suche:     ✅ Aktiv                   ║
   ║    API-Key: ${API_KEY.slice(0, 12)}...${API_KEY.slice(-4)}              ║
   ║                                              ║
   ╚══════════════════════════════════════════════╝
