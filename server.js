@@ -22,7 +22,7 @@ if (!API_KEY) {
 }
 
 // JSON Body Parser (larger limit for tool responses)
-app.use(express.json({ limit: "5mb" }));
+app.use(express.json({ limit: "50mb" }));
 
 // Dashboard (statische Dateien)
 app.use(express.static(path.join(__dirname, "public")));
